@@ -11,15 +11,46 @@ const PERMISSIONS: Permission[] = []
 const DISPLAY_NAME = 'AuthLayout'
 
 export const Route: FC = () => {
-  const { currentUser, userRole } = useAuthContext()
+  const { currentUser, userRole, isLoading } = useAuthContext()
 
-  if (currentUser) {
+  // Đợi cho đến khi loading xong mới check redirect
+  if (isLoading) {
+    return (
+      <AuthLayout>
+        <div className="flex items-center justify-center min-h-[200px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-2 text-sm text-muted-foreground">Loading...</p>
+          </div>
+        </div>
+      </AuthLayout>
+    )
+  }
+
+  // Simple redirect logic - auth provider handles main navigation
+  if (currentUser && userRole) {
+    console.log('🔄 Auth layout: User logged in, should redirect via provider')
+    
     if (userRole === USER_ROLE.TEACHER) {
       return <Navigate replace to="/teacher" />
     }
     if (userRole === USER_ROLE.GUARDIAN) {
       return <Navigate replace to="/dashboard" />
     }
+  }
+  
+  // If user is logged in but no role yet, wait
+  if (currentUser && !userRole) {
+    return (
+      <AuthLayout>
+        <div className="flex items-center justify-center min-h-[200px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-2 text-sm text-muted-foreground">Determining user role...</p>
+          </div>
+        </div>
+      </AuthLayout>
+    )
   }
 
   return (

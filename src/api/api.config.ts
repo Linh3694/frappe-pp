@@ -1,4 +1,8 @@
 export const FRAPPE_APIS = {
+  GET_CURRENT_USER_PROFILE: {
+    METHOD_STRING: 'parent_portal.api.user_availability.get_person_by_current_user',
+    SWR_KEY: 'get_current_user_profile',
+  },
   GET_ALL_CLASS_FEED: {
     METHOD_STRING: 'parent_portal.api.sis_feed.class_feed.get_all_class_feed',
     SWR_KEY: 'get_all_class_feed',

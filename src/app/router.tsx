@@ -17,7 +17,7 @@ import FullPageLoaderTemplate from '@templates/full-page-loader.template'
 
 const router = (isLogged: boolean, role?: USER_ROLE | null) => {
   let routes: RouteObject = {
-    path: '',
+    path: '/',
     lazy: () => import('./layout'),
     children: [],
   }
@@ -29,69 +29,55 @@ const router = (isLogged: boolean, role?: USER_ROLE | null) => {
       element: <Navigate replace to={PARENT_HOMEPAGE} />,
     })
     routes?.children?.push({
-      path: '',
+      path: '*',
       ...PARENT_ROUTES,
     })
-    routes?.children?.push({
-      path: '*',
-      element: <Navigate replace to={PARENT_HOMEPAGE} />,
-    })
   }
-  if (role === USER_ROLE.TEACHER) {
+  else if (role === USER_ROLE.TEACHER) {
     routes?.children?.push({
       index: true,
       element: <Navigate replace to={TEACHER_HOMEPAGE} />,
     })
     routes?.children?.push({
-      path: '/teacher',
+      path: 'teacher/*',
       ...TEACHER_ROUTES,
     })
-    routes?.children?.push({
-      path: '*',
-      element: <Navigate replace to={TEACHER_HOMEPAGE} />,
-    })
   }
-
-  if (role === null) {
+  else if (role === null) {
+    routes?.children?.push({
+      index: true,
+      element: <NoPermissionState />,
+    })
     routes?.children?.push({
       path: '*',
       element: <NoPermissionState />,
     })
   }
-  if (role === undefined) {
+  else if (!isLogged || role === undefined) {
     routes?.children?.push({
       index: true,
       element: <Navigate replace to={'/auth/login'} />,
     })
     routes?.children?.push({
-      path: '*',
-      element: <Navigate replace to={'/'} />,
-    })
-  }
-  if (!isLogged) {
-    routes?.children?.push({
-      path: 'auth',
+      path: 'auth/*',
       ...AUTH_ROUTES,
     })
+    routes?.children?.push({
+      path: '*',
+      element: <Navigate replace to={'/auth/login'} />,
+    })
   }
+
   // console.log(routes)
 
-  return createBrowserRouter(
-    [
-      {
-        path: '',
-        errorElement: import.meta.env.MODE !== 'development' && <GlobalError />,
-        children: [
-          {
-            ...routes,
-          },
-        ],
-      },
-    ],
-    {
-      basename: `/${env.BASE_NAME}`,
-    },
-  )
+  // Only use basename in production
+  const basename = import.meta.env.PROD 
+    ? (import.meta.env.VITE_BASE_NAME === '/' ? '' : import.meta.env.VITE_BASE_NAME)
+    : '';
+  
+  console.log('🛤️ Router basename:', basename);
+  
+  return createBrowserRouter([routes], basename ? { basename } : {})
 }
 
 export type GlobalErrorProps = {

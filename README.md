@@ -18,30 +18,32 @@ yarn install
 
 ### 2. Cấu Hình Environment
 
-Tạo file `.env` từ template:
+Tạo file `.env` trong thư mục root:
 
 ```bash
-cp .env.example .env
+touch .env
 ```
 
-Cập nhật các biến môi trường trong `.env`:
+Thêm các biến môi trường sau vào file `.env`:
 
 ```env
-# URL của backend API server
-VITE_BACKEND_URL=http://your-backend-server:8000
+# Production Backend Configuration
+VITE_FRAPPE_PATH=https://admin.sis.wellspring.edu.vn
+VITE_SITE_NAME=admin.sis.localhost
 
-# Site name cho Frappe
-VITE_SITE_NAME=your-site-name
+# Socket Configuration (optional)
+VITE_SOCKET_PORT=9001
 
-# Socket port (optional)
-VITE_SOCKET_PORT=9000
-
-# Other configs
-VITE_BASE_NAME=/
+# Base Configuration
+VITE_BASE_NAME=/parent_portal/
 VITE_ASSET_URL=
 VITE_VERSION=1.0.1
+
+# External APIs
 VITE_PROVINCES_VN_API=https://provinces.open-api.vn/api
 ```
+
+**Quan trọng:** Cấu hình này sử dụng production backend `https://admin.sis.wellspring.edu.vn` thông qua Vite proxy để xử lý CORS và cookies.
 
 ### 3. Development Server
 
