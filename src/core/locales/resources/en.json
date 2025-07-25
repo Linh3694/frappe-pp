@@ -1,0 +1,457 @@
+{
+  "assignments": "Assignments",
+  "attendance": "Attendance",
+  "bus": "Bus",
+  "chat": "Chat",
+  "class": "Class",
+  "class_feed": {
+    "description": "Stay up-to-date with news",
+    "title": "Class Feed"
+  },
+  "dashboard": "Dashboard",
+  "dayWithCount_one": "{{count}} day",
+  "dayWithCount_other": "{{count}} days",
+  "day_one": "day",
+  "day_other": "days",
+  "feed": "Feed",
+  "grades": "Grades",
+  "health": "Health",
+  "language": "Language",
+  "leave_request": "Leave Request",
+  "login": "Login",
+  "logout": "Logout",
+  "news": "News",
+  "notifications": "Notification",
+  "school": "School",
+  "school_feed": {
+    "description": "Stay up-to-date with news",
+    "title": "School Feed"
+  },
+  "semester_overview": {
+    "description": "Overview of the semester",
+    "ends_on": "Ends On",
+    "title": "Semester Overview",
+    "until_end_term_exam": "Until end-term exam"
+  },
+  "academy_overview": {
+    "description": "Overview of the semester",
+    "start_from": "Start from",
+    "ends_on": "Ends on",
+    "title": "Academy Term Overview",
+    "until_end_term_exam": "Until end-term exam"
+  },
+  "settings": "Settings",
+  "status": "Status",
+  "status_option": {
+    "off_campus": "Off Campus",
+    "on_campus": "On Campus"
+  },
+  "student_management": "Student Management",
+  "switch_student": "Switch Student",
+  "timetable": "Timetable",
+  "upcoming_events": "Upcoming Events",
+  "week": "Week",
+  "top_news": "Top news",
+  "all_news": "All news",
+  "post_at": "Posted at {{time}}",
+  "common": {
+    "list_student_c": "List student of {{class}}",
+    "pages": "Pages",
+    "teacher": "Teacher",
+    "student": "Student",
+    "n_students": "{{number}} students",
+    "class": "Class",
+    "class_name": "Class name",
+    "class_c": "Class {{class}}",
+    "classes": "Classes",
+    "classroom": "Classroom",
+    "classroom_c": "Classroom : {{class}}",
+    "subjects": "Subjects",
+    "subject": "Subject",
+    "new_record": "New record",
+    "official_class": "Official class",
+    "course_class": "Course class",
+    "optional": "Optional",
+    "activities": "Activites",
+    "c_days_to_go": "{{count}} days to go",
+    "tomorrow": "Tomorrow",
+    "week_w": "Week {{week}}",
+    "start_from_d": "Start from {{date}}",
+    "ends_on_d": "Ends on {{date}}",
+    "welcome_back": "Welcome back",
+    "news": "News",
+    "timetable": "Timetable",
+    "settings": "Settings",
+    "attendance": "Attendance",
+    "attendance_by_classes": "Attendance by classes",
+    "attendance_by_classes_desc": "Manage the attendance records of all students in the classes that you are involved in managing.",
+    "attendance_by_subjects": "Attendance by subjects",
+    "attendance_by_subjects_desc": "Manage the attendance records of all students in the subjects that you teach.",
+    "overview": "Overview",
+    "attendance_calendar": "Attendance calendar",
+    "attendance_timeline": "Attendance timeline",
+    "reason_t": "Reason: {{text}}",
+    "present": "Present",
+    "excused_absence": "Excused absence",
+    "excused": "Excused",
+    "unexcused_absence": "Unexcused absence",
+    "unexcused": "Unexcused",
+    "late": "Late",
+    "submitted_at_d_by_n": "Submitted at {{date}} by {{name}}",
+    "posted_at_d": "Posted at {{date}}",
+    "swipe_next_student": "Swipe to view next student",
+    "account_profile": "Account & Profile",
+    "password_security": "Password & Security",
+    "preferences": "Preferences",
+    "your_profile": "Your profile",
+    "your_profile_meta": "Choose how you are displayed on application.",
+    "full_name": "Full name",
+    "name": "Name",
+    "email": "Email",
+    "date_of_birth": "Date of birth",
+    "phone": "Phone number",
+    "avatar": "Avatar",
+    "switch_account": "Switch account",
+    "switch_account_meta": "If you want use another account, you can sign-out and sign-in with another account.",
+    "account_password": "Account password",
+    "account_password_meta": "If you suspect that your password has been compromised, changing your passwords regularly can help mitigate risks",
+    "appearance": "Appearance",
+    "appearance_meta": "Choose how you are displayed as a stylish",
+    "theme": "Theme",
+    "theme_meta": "Change theme of your application",
+    "language": "Language",
+    "language_meta": "Change language of your application",
+    "version": "Version",
+    "forgot_password_question": "Forgot password ?",
+    "forgot_password_meta": "Enter the email address you used when you joined and we'll send you intructions to reset your password.",
+    "reset_password": "Reset password",
+    "reset_password_meta": "Enter a new password below to change your password",
+    "my_class": "My class",
+    "my_courses": "My Courses",
+    "today_schedule": "Today schedule",
+    "view_info": "View info",
+    "total_n_students": "Total: {{number}} students",
+    "student_info": "Student info",
+    "event_details": "Event details",
+    "loading": "Loading...",
+    "student_matching": "Student matching",
+    "parent_information": "Parent Information",
+    "term_conditions": "Term & conditions",
+    "my_children": "My children",
+    "personal_information": "Personal information",
+    "contact_information": "Contact information",
+    "family": "Family",
+    "relationship_node": "The relationship between students and parents:",
+    "relationship_p": "Relationship: {{person}}",
+    "unknown": "Unknown",
+    "class_management": "Class Management"
+  },
+  "components": {
+    "menu": {
+      "home": "Home",
+      "teacher": "Teacher",
+      "student": "Student",
+      "dashboard": "Dashboard",
+      "news_events": "News",
+      "news": "News",
+      "menu": "Menu",
+      "food_menu": "Menu",
+      "activities": "Activities",
+      "chat": "Chat",
+      "timetable": "Timetable",
+      "attendance": "Attendance",
+      "leave_request": "Leave Request",
+      "grades": "Grades",
+      "health": "Health",
+      "bus": "Bus",
+      "settings": "Settings",
+      "profile": "Profile",
+      "translate": "Translate",
+      "dark_mode": "Dark mode",
+      "logout": "Logout",
+      "subjects": "Subjects",
+      "classes": "Classes",
+      "notifications": "Notification"
+    },
+    "inputs": {
+      "select_class": {
+        "label": "Class",
+        "all_item": "All items",
+        "placeholder": "Select a class"
+      },
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter a title",
+        "err_required": "This field is required"
+      },
+      "photos": {
+        "label": "Photos"
+      },
+      "upload_images": {
+        "placeholder": "Click to upload or drag and drop"
+      },
+      "public_time": {
+        "label": "Public time"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter description"
+      },
+      "content": {
+        "label": "Content",
+        "placeholder": "Enter content"
+      },
+      "class": {
+        "label": "Class",
+        "placeholder": "Select class"
+      },
+      "period": {
+        "label": "Period",
+        "placeholder": "Select period...",
+        "empty": "Don't have any class period today"
+      },
+      "select_show_students": {
+        "label": "Show students",
+        "all_item": "Show all"
+      },
+      "reason": {
+        "label": "Reason",
+        "placeholder": "Click to add the student's reason for being absent or late."
+      },
+      "full_name": {
+        "label": "Full name",
+        "placeholder": "Enter your full name",
+        "err_required": "This field is required"
+      },
+      "name": {
+        "label": "First name",
+        "placeholder": "Enter your name",
+        "err_required": "This field is required",
+        "err_included": "This first name not appear in your full name"
+      },
+      "date_of_birth": {
+        "label": "Date of birth",
+        "placeholder": "Pick your birthday"
+      },
+      "national": {
+        "label": "National",
+        "placeholder": "Select country"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email",
+        "err_required": "This field is required",
+        "err_invalid": "This email is invalid",
+        "err_email_exists": "Account with this email already exits. Please enter another email",
+        "err_wellspring_email": "Account with email Wellspring not allowed. Please enter another email"
+      },
+      "phone": {
+        "label": "Phone number",
+        "placeholder": "Enter your phone number",
+        "err_required": "This field is required",
+        "err_invalid": "This phone is invalid"
+      },
+      "address": {
+        "label": "Address",
+        "placeholder": "Street/ Building"
+      },
+      "province": {
+        "label": "Province",
+        "placeholder": "Select province"
+      },
+      "district": {
+        "label": "District",
+        "placeholder": "Select district"
+      },
+      "ward": {
+        "label": "Ward",
+        "placeholder": "Select ward"
+      },
+      "company_name": {
+        "label": "Company name",
+        "placeholder": "Enter your company name"
+      },
+      "job_title": {
+        "label": "Job title",
+        "placeholder": "Enter your job"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password",
+        "err_required": "This field is required"
+      },
+      "old_password": {
+        "label": "Old password",
+        "placeholder": "Enter your old password",
+        "notice": "Notice: You only have one chance to try. If you fail, you will be sent back to the login. So be careful!"
+      },
+      "new_password": {
+        "label": "Mật khẩu mới",
+        "placeholder": "Enter new password"
+      },
+      "re_password": {
+        "label": "Xác nhận mật khẩu",
+        "placeholder": "Confirm new password"
+      },
+      "theme": {
+        "items": {
+          "light_mode": "Light mode",
+          "dark_mode": "Dark mode"
+        }
+      },
+      "search_students": {
+        "label": "Search student",
+        "placeholder": "Enter student's name here",
+        "placeholder_by_code": "Enter student's code here",
+        "notice": "Please use the student ID number provided by the school to look up and specify the relationship between the parent and the student."
+      },
+      "filter_class": {
+        "placeholder": "Select class...",
+        "search_placeholder": "Search class...",
+        "empty": "Not found any class"
+      },
+      "filter": {
+        "search_placeholder": "Search...",
+        "empty": "Not found data"
+      },
+      "month": {
+        "placeholder": "Select month"
+      },
+      "year": {
+        "placeholder": "Select year"
+      }
+    },
+    "buttons": {
+      "add_feed": "Add activity feed",
+      "delete_feed": "Delete feed",
+      "create": "Create",
+      "save": "Save",
+      "confirm": "Confirm",
+      "cancel": "Cancel",
+      "back_to_login": "Back to login",
+      "create_record": "Create record",
+      "add_reason": "Add reason",
+      "edit_reason": "Edit reason",
+      "save_attendance": "Save attendance",
+      "sign_out": "Sign out",
+      "change_password": "Change password",
+      "sign_in": "Sign in",
+      "sign_up": "Sign up",
+      "send_mail": "Send mail",
+      "reset": "Reset",
+      "view_details": "View details",
+      "show_more": "Show more",
+      "back": "Back",
+      "next": "Next",
+      "submit": "Submit",
+      "search": "Search",
+      "close": "Close"
+    },
+    "modals": {
+      "create_feed": {
+        "heading": "Desgin your feed",
+        "description": "Fill out the information to start your feed. Enjoy content tailored to your preferences."
+      },
+      "create_attendance_class": {
+        "heading": "Create record",
+        "description": "Choose information below to start attendance students by classes."
+      },
+      "create_attendance_subject": {
+        "heading": "Create record",
+        "description": "Choose information below to start attendance students by course class."
+      },
+      "add_reason": {
+        "heading": "Reason of student",
+        "description": "Fill the reason below to take note at the attendance record of this student."
+      },
+      "confirm_save_attendance": {
+        "heading": "Are you sure?",
+        "description": "This action will create a new record attendance for today."
+      }
+    },
+    "notification": {
+      "news_empty": {
+        "heading": "News is empty",
+        "description": "You have no article at this moment"
+      },
+      "class_not_found": {
+        "heading": "No class found"
+      },
+      "events_empty": {
+        "heading": "Events is empty",
+        "description": "You have no event at this moment"
+      },
+      "activities_empty": {
+        "heading": " Activites is empty",
+        "description": "You have no activities at this moment"
+      },
+      "forbbiden": {
+        "heading": "Fobbiden",
+        "description": "We are sorry, but you don't have access to this page."
+      },
+      "no_permisson": {
+        "heading": "No Permission",
+        "description": "Sorry, you cannot access this page. To Access, please contact the administrator."
+      },
+      "server_error": {
+        "heading": "Internet Server Error",
+        "description": "We are working on fixing the problem. Please try again"
+      },
+      "coming_soon": {
+        "heading": "Coming Soon",
+        "description": "This feature is still under development. Come back next time"
+      },
+      "no_results": {
+        "heading": "No results found",
+        "description": "Try adjusting your search or filter to find what you're looking for."
+      },
+      "no_attendance": {
+        "description": "There are no attendance taken yet"
+      },
+      "no_period": {
+        "description": "There are no any period schedules found for this date"
+      },
+      "no_period_today": {
+        "description": "There are no any period schedules found for today"
+      },
+      "no_members_in_family": {
+        "heading": "No members found",
+        "description": "No family members found"
+      },
+      "password_updated": {
+        "heading": "Password updated!",
+        "description": "Your password has been updated."
+      },
+      "authenticate_failed": {
+        "heading": "Authenticate failed!",
+        "description": "You will be sent back to the login in 3 seconds."
+      },
+      "accept_term": {
+        "description": "I have read and agreed to the {{object}}"
+      },
+      "register_successful": {
+        "heading": "Register successful",
+        "description": "Your application has been submitted and is currently under review. You will receive a notification about your account as soon as possible."
+      },
+      "register_failure": {
+        "heading": "Register failure",
+        "description": "Your application has not been submitted. Please check your information before trying again."
+      },
+      "found_information": {
+        "heading": "Notice",
+        "description": "Personal information has been found and extracted from the enrollment application. Parents, please check and update if there is any information that is incorrect or needs to be updated."
+      },
+      "search_not_found": {
+        "heading": "No results matched with \"{{keyword}}\"",
+        "description": "Please check and try again."
+      },
+      "sign_in_failed": {
+        "description": "Email or Password is wrong. Please check again"
+      }
+    },
+    "links": {
+      "forgot_password": "Forgot password?",
+      "register": "Don't have an account?"
+    }
+  }
+}

@@ -1,0 +1,448 @@
+{
+  "assignments": "Bài tập",
+  "attendance": "Điểm danh",
+  "bus": "Xe bus",
+  "chat": "Tin nhắn",
+  "class": "Lớp",
+  "class_feed": {
+    "description": "Cập nhật thông tin mới nhất trong lớp",
+    "title": "Bảng tin lớp"
+  },
+  "dashboard": "Trang chủ",
+  "dayWithCount_one": "{{count}} ngày",
+  "dayWithCount_other": "{{count}} ngày",
+  "day_one": "ngày",
+  "day_other": "ngày",
+  "feed": "Bảng tin",
+  "grades": "Điểm số",
+  "health": "Sức khỏe",
+  "language": "Ngôn ngữ",
+  "leave_request": "Nghỉ phép",
+  "login": "Đăng nhập",
+  "logout": "Đăng xuất",
+  "news": "Tin tức",
+  "notifications": "Thông báo",
+  "school": "Trường",
+  "school_feed": {
+    "description": "Cập nhật thông tin mới nhất trong trường",
+    "title": "Bảng tin trường"
+  },
+  "semester_overview": {
+    "description": "Tổng quan học kỳ",
+    "ends_on": "Kết thúc ngày",
+    "title": "Tổng quan học kỳ",
+    "until_end_term_exam": "Đến kỳ thi cuối kỳ"
+  },
+  "academy_overview": {
+    "description": "Tổng quan năm học",
+    "start_from": "Bắt đầu từ",
+    "ends_on": "Kết thúc ngày",
+    "title": "Tổng quan năm học",
+    "until_end_term_exam": "Đến kỳ thi cuối kì"
+  },
+  "settings": "Cài đặt",
+  "status": "Trạng thái",
+  "status_option": {
+    "off_campus": "Ngoài trường",
+    "on_campus": "Trên trường"
+  },
+  "student_management": "Quản lý học sinh",
+  "switch_student": "Đổi học sinh",
+  "timetable": "Thời khoá biểu",
+  "upcoming_events": "Sự kiện sắp tới",
+  "week": "Tuần",
+  "top_news": "Tin tức nổi bật",
+  "all_news": "Tất cả tin tức",
+  "common": {
+    "list_student_c": "Danh sách lớp {{class}}",
+    "pages": "Trang",
+    "teacher": "Giáo viên",
+    "student": "Học sinh",
+    "n_students": "{{number}} học sinh",
+    "class": "Lớp",
+    "class_name": "Tên lớp",
+    "class_c": "Lớp {{class}}",
+    "classes": "Lớp",
+    "classroom": "Phòng học",
+    "classroom_c": "Phòng học : {{class}}",
+    "subjects": "Môn học",
+    "subject": "Môn học",
+    "new_record": "Bản ghi mới",
+    "official_class": "Lớp chính thức",
+    "course_class": "Lớp bộ môn",
+    "optional": "Tuỳ chọn",
+    "activities": "Hoạt động",
+    "c_days_to_go": "Còn {{count}} ngày nữa",
+    "tomorrow": "Ngày mai",
+    "week_w": "Tuần {{week}}",
+    "start_from_d": "Bắt đầu từ {{date}}",
+    "ends_on_d": "Kết thúc vào  {{date}}",
+    "welcome_back": "Xin chào",
+    "news": "Tin tức",
+    "timetable": "Thời khoá biểu",
+    "settings": "Cài đặt",
+    "attendance": "Điểm danh",
+    "attendance_by_classes": "Điểm danh theo lớp",
+    "attendance_by_classes_desc": "Thực hiện điểm danh hoặc tra cứu lịch sử điểm danh của các lớp mà bạn phụ trách quản lý.",
+    "attendance_by_subjects": "Điểm danh theo tiết học",
+    "attendance_by_subjects_desc": "Thực hiện điểm danh hoặc tra cứu lịch sử điểm danh của các tiết mà bạn đảm nhận cho một lớp nào đó.",
+    "overview": "Tổng quan",
+    "attendance_calendar": "Lịch điểm danh",
+    "attendance_timeline": "Lịch trình điểm danh",
+    "reason_t": "Lý do: {{text}}",
+    "present": "Có mặt",
+    "excused_absence": "Vắng có phép",
+    "excused": "Có phép",
+    "unexcused_absence": "Vắng không phép",
+    "unexcused": "Không phép",
+    "late": "Đi trễ",
+    "submitted_at_d_by_n": "Gửi vào lúc {{date}} bởi {{name}}",
+    "posted_at_d": "Đăng vào lúc {{date}}",
+    "swipe_next_student": "Vuốt để xem học sinh tiếp theo",
+    "account_profile": "Tài khoản & hồ sơ",
+    "password_security": "Mật khẩu & bảo mật",
+    "preferences": "Tuỳ chọn cá nhân",
+    "your_profile": "Hồ sơ của bạn",
+    "your_profile_meta": "Cách mà bạn sẽ được hiển thị trên ứng dụng",
+    "full_name": "Họ và tên",
+    "name": "Tên",
+    "email": "Địa chỉ email",
+    "date_of_birth": "Ngày sinh",
+    "phone": "Số điện thoại",
+    "avatar": "Ảnh đại diện",
+    "switch_account": "Chuyển đổi tài khoản",
+    "switch_account_meta": "Nếu bạn muốn sử dụng một tài khoản khác, bạn có thể đăng xuất và đăng nhập lại với tài khoản khác",
+    "account_password": "Mật khẩu tài khoản",
+    "account_password_meta": "Nếu bạn nghi ngờ mật khẩu bị lộ, việc thay đổi mật khẩu thường xuyên sẽ giúp hạn chế rủi ro.",
+    "appearance": "Giao diện",
+    "appearance_meta": "Chọn cách thể hiện phong cách của bạn",
+    "theme": "Chủ đề",
+    "theme_meta": "Thay đổi chủ đề cho ứng dụng của bạn",
+    "language": "Ngôn ngữ",
+    "language_meta": "Thay đổi ngôn ngữ cho ứng dụng của bạn",
+    "version": "Phiên bản",
+    "forgot_password_question": "Quên mật khẩu ?",
+    "forgot_password_meta": "Nhập địa chỉ email tài khoản và chúng tôi sẽ gửi cho bạn hướng dẫn để cài lại mật khẩu",
+    "reset_password": "Đặt lại mật khẩu",
+    "reset_password_meta": "Nhập mật khẩu mới bên dưới để đổi lại mật khẩu",
+    "my_class": "Lớp của tôi",
+    "my_courses": "Lớp bộ môn",
+    "today_schedule": "Lịch dạy hôm nay",
+    "view_info": "Xem thông tin",
+    "total_n_students": "Tổng số: {{number}} học sinh",
+    "student_info": "Thông tin học sinh",
+    "event_details": "Chi tiết sự kiện",
+    "loading": "Đang tải...",
+    "student_matching": "Kết nối học sinh",
+    "parent_information": "Thông tin phụ huynh",
+    "term_conditions": "Điều khoản dịch vụ",
+    "my_children": "Danh sách con",
+    "personal_information": "Thông tin cá nhân",
+    "contact_information": "Thông tin liên lạc",
+    "family": "Gia đình",
+    "relationship_node": "Mối quan hệ giữa học sinh và phụ huynh:",
+    "relationship_p": "Quan hệ: {{person}}",
+    "unknown": "Chưa rõ",
+    "class_management": "Quản lý lớp học"
+  },
+  "post_at": "Đăng lúc {{time}}",
+  "components": {
+    "menu": {
+      "home": "Trang chủ",
+      "teacher": "Giáo viên",
+      "student": "Học sinh",
+      "dashboard": "Dashboard",
+      "news_events": "Tin tức",
+      "news": "Tin tức",
+      "activities": "Hoạt động",
+      "chat": "Trò truyện",
+      "menu": "Thực đơn",
+      "food_menu": "Thực đơn",
+      "timetable": "Thời khoá biểu",
+      "attendance": "Điểm danh",
+      "leave_request": "Nghỉ phép",
+      "grades": "Điểm số",
+      "health": "Sức khoẻ",
+      "bus": "Xe buýt",
+      "settings": "Cài đặt",
+      "profile": "Hồ sơ",
+      "translate": "Ngôn ngữ",
+      "dark_mode": "Giao diện tối",
+      "logout": "Đăng xuất",
+      "subjects": "Tiết học",
+      "classes": "Lớp",
+      "notifications": "Thông báo"
+    },
+    "inputs": {
+      "select_class": {
+        "label": "Lớp học",
+        "all_item": "Tất cả",
+        "placeholder": "Chọn lớp"
+      },
+      "title": {
+        "label": "Tiêu đề",
+        "placeholder": "Nhập tiêu đề"
+      },
+      "photos": {
+        "label": "Hình ảnh"
+      },
+      "upload_images": {
+        "placeholder": "Nhấn để upload hoặc kéo thả tệp"
+      },
+      "public_time": {
+        "label": "Thời gian công khai"
+      },
+      "description": {
+        "label": "Mô tả",
+        "placeholder": "Nhập mô tả"
+      },
+      "content": {
+        "label": "Nội dung",
+        "placeholder": "Nhập nội dung"
+      },
+      "class": {
+        "label": "Lớp",
+        "placeholder": "Select class"
+      },
+      "period": {
+        "label": "Tiết học",
+        "placeholder": "Chọn tiết học...",
+        "empty": "Không có tiết học nào vào hôm nay"
+      },
+      "select_show_students": {
+        "label": "Hiển thị học sinh",
+        "all_item": "Hiển thị tất cả"
+      },
+      "reason": {
+        "label": "Lý do",
+        "placeholder": "Nhấn để nhập lý do đi trễ hoặc vắng mặt của học sinh"
+      },
+      "full_name": {
+        "label": "Tên đầy đủ",
+        "placeholder": "Nhập tên đầy đủ của bạn",
+        "err_required": "Trường này là bắt buộc"
+      },
+      "name": {
+        "label": "Tên",
+        "placeholder": "Nhập tên của bạn",
+        "err_required": "Trường này là bắt buộc",
+        "err_included": "Tên không được tìm thấy trong họ tên"
+      },
+      "date_of_birth": {
+        "label": "Ngày sinh",
+        "placeholder": "Chọn ngày sinh"
+      },
+      "national": {
+        "label": "Quốc tịch",
+        "placeholder": "Chọn quốc gia"
+      },
+      "phone": {
+        "label": "Số điện thoại",
+        "placeholder": "Nhập số điện thoại của bạn",
+        "err_required": "Trường này là bắt buộc",
+        "err_invalid": "Số điện thoại không hợp lệ"
+      },
+      "address": {
+        "label": "Địa chỉ",
+        "placeholder": "Tên đường/ Toà nhà"
+      },
+      "province": {
+        "label": "Tỉnh/ Thành phố",
+        "placeholder": "Chọn tỉnh/ thành phố"
+      },
+      "district": {
+        "label": "Quận/ Huyện",
+        "placeholder": "Chọn quận/ huyện"
+      },
+      "ward": {
+        "label": "Phường/ Xã",
+        "placeholder": "Chọn phường/ xã"
+      },
+      "company_name": {
+        "label": "Tên công ty/ tổ chức",
+        "placeholder": "Nhập tên công ty/ tổ chức"
+      },
+      "job_title": {
+        "label": "Công việc",
+        "placeholder": "Nhập công việc của bạn"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Nhập email của bạn",
+        "err_required": "Trường này là bắt buộc",
+        "err_invalid": "Địa chỉ email không hợp lệ",
+        "err_email_exists": "Tài khoản với email này đã tồn tại. Vui lòng nhập email khác",
+        "err_wellspring_email": "Tài khoản với email Wellspring không được phép. Vui lòng nhập email khác"
+      },
+      "password": {
+        "label": "Mật khẩu",
+        "placeholder": "Nhập mật khẩu của bạn",
+        "err_required": "Trường này là bắt buộc"
+      },
+      "old_password": {
+        "label": "Mật khẩu cũ",
+        "placeholder": "Nhập mật khẩu cũ của bạn",
+        "notice": "Lưu ý: Bạn chỉ có một lần để thử mật khẩu cũ. Nếu thất bại, bạn sẽ phải đăng nhập lại. Vì vậy cẩn thận nhá!"
+      },
+      "new_password": {
+        "label": "Mật khẩu mới",
+        "placeholder": "Nhập mật khẩu mới"
+      },
+      "re_password": {
+        "label": "Xác nhận mật khẩu",
+        "placeholder": "Xác nhận mật khẩu mớis"
+      },
+      "theme": {
+        "items": {
+          "light_mode": "Giao diện sáng",
+          "dark_mode": "Giao diện tối"
+        }
+      },
+      "search_students": {
+        "label": "Tìm kiếm học sinh",
+        "placeholder": "Nhập tên học sinh tại đây",
+        "placeholder_by_code": "Nhập mã học sinh tại đây",
+        "notice": "Vui lòng sử dụng mã số học sinh đã được cung cấp bởi nhà trường để tìm kiếm và xác định mối quan hệ giữa phụ huynh và học sinh"
+      },
+      "filter_class": {
+        "placeholder": "Chọn lớp...",
+        "search_placeholder": "Tìm kiếm lớp...",
+        "empty": "Không tìm thấy lơp nào"
+      },
+      "filter": {
+        "search_placeholder": "Tìm kiếm...",
+        "empty": "Không tìm thấy dữ liệu"
+      },
+      "month": {
+        "placeholder": "Chọn tháng"
+      },
+      "year": {
+        "placeholder": "Chọn năm"
+      }
+    },
+    "buttons": {
+      "add_feed": "Thêm hoạt động",
+      "delete_feed": "Xoá hoạt động",
+      "create": "Tạo",
+      "save": "Lưu",
+      "confirm": "Xác nhận",
+      "cancel": "Huỷ bỏ",
+      "back_to_login": "Trờ về đăng nhập",
+      "create_record": "Tạo bản ghi",
+      "add_reason": "Thêm lý do",
+      "edit_reason": "Sửa lý do",
+      "save_attendance": "Lưu điểm danh",
+      "sign_out": "Đăng xuất",
+      "change_password": "Đổi mật khẩu",
+      "sign_in": "Đăng nhập",
+      "sign_up": "Đăng ký",
+      "send_mail": "Gửi mail",
+      "reset": "Đặt lại",
+      "view_details": "Xem chi tiết",
+      "show_more": "Xem thêm",
+      "back": "Trở lại",
+      "next": "Kế tiếp",
+      "submit": "Gửi yêu cầu",
+      "close": "Đóng",
+      "search": "Tìm kiếm"
+    },
+    "modals": {
+      "create_feed": {
+        "heading": "Thiết kế tin của bạn",
+        "description": "Điền thông tin để bắt đầu. Và tận hưởng nội dung được cá nhân hóa theo phong cách của bạn."
+      },
+      "create_attendance_class": {
+        "heading": "Tạo bản ghi",
+        "description": "Chọn thông tin bên dưới để bắt đầu thực hiện điểm danh theo lớp."
+      },
+      "create_attendance_subject": {
+        "heading": "Tạo bản ghi",
+        "description": "Chọn các thông tin bên dưới để bắt đầu thực hiện điểm danh theo tiết học."
+      },
+      "add_reason": {
+        "heading": "Lý do vắng mặt/đi trễ",
+        "description": "Điền lý do vắng mặt hoặc đi trễ  của học sinh vào bản ghi điểm danh."
+      },
+      "confirm_save_attendance": {
+        "heading": "Bạn có chắc muốn thực hiện?",
+        "description": "Hành động này sẽ tạo ra một bản ghi điểm danh mới cho ngày hôm nay."
+      }
+    },
+    "notification": {
+      "news_empty": {
+        "heading": "Không tìm thấy tin tức",
+        "description": "Hiện chưa có tin tức hoặc sự kiện nào"
+      },
+      "events_empty": {
+        "heading": "Không tìm thấy sự kiện",
+        "description": "Hiên chưa có sự kiện nào lúc này"
+      },
+      "class_not_found": {
+        "heading": "Không tìm thấy lớp nào"
+      },
+      "activities_empty": {
+        "heading": "Không tìm thấy tin tức",
+        "description": "Hiện chưa có tin tức hoặc sự kiện nào"
+      },
+      "forbbiden": {
+        "heading": "Không thể truy cập",
+        "description": "Bạn không có quyền hạn để truy cập nội dung này"
+      },
+      "no_permisson": {
+        "heading": "Không có quyền truy cập",
+        "description": "Bạn không thể truy cập. Để có thể truy cập, hãy liên hệ quản trị viên để cấp quyền."
+      },
+      "no_results": {
+        "heading": "Không tìm thấy kết quả",
+        "description": "Thử thay đổi phương thức tìm kiếm hoặc bộ lọc mà bạn đang tìm kiếm là gì."
+      },
+      "no_attendance": {
+        "description": "Chưa có hoạt động điểm danh nào được thực hiện"
+      },
+      "no_period": {
+        "description": "Hiện không có bất kỳ tiết dạy nào cho ngày này"
+      },
+      "no_period_today": {
+        "description": "Hiện không có bất kỳ tiết dạy nào cho hôm nay"
+      },
+      "no_members_in_family": {
+        "heading": "Không tìm thấy thành viên nào",
+        "description": "Không tìm thấy bất cứ thành viên nào trong gia đình"
+      },
+      "password_updated": {
+        "heading": "Mật khẩu đã cập nhật!",
+        "description": "Mật khẩu của ban đã được cập nhật thành công."
+      },
+      "authenticate_failed": {
+        "heading": "Lỗi xác thực!",
+        "description": "Bạn sẽ trở về trang đăng nhập trong 3 giây nữa."
+      },
+      "accept_term": {
+        "description": "Tôi đã đọc và đồng ý với {{object}}"
+      },
+      "register_successful": {
+        "heading": "Đăng ký thành công",
+        "description": "Đơn đăng ký của bạn đã được gửi và trong quá trình xét duyệt. Thông báo về tài khoản sẽ được gửi cho bạn trong thời gian sớm nhất."
+      },
+      "register_failure": {
+        "heading": "Đăng ký thất bại",
+        "description": "Đơn đăng ký của bạn chưa được gửi. Vui lòng kiểm tra lại thông tin trước khi thử lại."
+      },
+      "found_information": {
+        "heading": "Lưu ý",
+        "description": "Thông tin cá nhân đã được tìm thấy và trích xuất từ đơn đăng ký nhập học. Quý phụ huynh vui lòng kiểm tra và cập nhật nếu như có thông tin chưa chính xác hoặc cần cập nhật."
+      },
+      "search_not_found": {
+        "heading": "Không tìm thấy kết quả cho %20{{keyword}}%20",
+        "description": "Vui lòng kiểm tra và thử lại."
+      },
+      "sign_in_failed": {
+        "description": "Email hoặc mật khẩu không đúng. Vui lòng kiểm tra lại"
+      }
+    },
+    "links": {
+      "forgot_password": "Quên mật khẩu?",
+      "register": "Bạn chưa có tài khoản?"
+    }
+  }
+}

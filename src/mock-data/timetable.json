@@ -1,0 +1,483 @@
+{
+    "timetable": [
+      {
+        "day": "mon",
+        "items": [
+          {
+            "time": "9:00",
+            "subject": "Maths 1",
+            "teacher": "Mr. Smith"
+          },
+          {
+            "time": "9:30",
+            "subject": "Maths 2",
+            "teacher": "Mr. Smith"
+          },
+          {
+            "time": "10:00",
+            "subject": "English",
+            "teacher": "Mrs. Jones"
+          },
+          {
+            "time": "11:00",
+            "subject": "Science",
+            "teacher": "Mr. Brown"
+          },
+          {
+            "time": "12:00",
+            "subject": "History",
+            "teacher": "Miss. White"
+          },
+          {
+            "time": "13:00",
+            "subject": "Lunch",
+            "teacher": ""
+          },
+          {
+            "time": "14:00",
+            "subject": "Art",
+            "teacher": "Mr. Green"
+          },
+          {
+            "time": "15:00",
+            "subject": "Music",
+            "teacher": "Mrs. Black"
+          },
+          {
+            "time": "16:00",
+            "subject": "PE",
+            "teacher": "Mr. Blue"
+          }
+        ]
+      },
+      {
+        "day": "tue",
+        "items": [
+          {
+            "time": "9:00",
+            "subject": "Maths",
+            "teacher": "Mr. Smith"
+          },
+          {
+            "time": "10:00",
+            "subject": "English",
+            "teacher": "Mrs. Jones"
+          },
+          {
+            "time": "11:00",
+            "subject": "Science",
+            "teacher": "Mr. Brown"
+          },
+          {
+            "time": "12:00",
+            "subject": "History",
+            "teacher": "Miss. White"
+          },
+          {
+            "time": "13:00",
+            "subject": "Lunch",
+            "teacher": ""
+          },
+          {
+            "time": "14:00",
+            "subject": "Art",
+            "teacher": "Mr. Green"
+          },
+          {
+            "time": "15:00",
+            "subject": "Music",
+            "teacher": "Mrs. Black"
+          },
+          {
+            "time": "16:00",
+            "subject": "PE",
+            "teacher": "Mr. Blue"
+          }
+        ]
+      },
+      {
+        "day": "wed",
+        "items": [
+          {
+            "time": "9:00",
+            "subject": "Maths",
+            "teacher": "Mr. Smith"
+          },
+          {
+            "time": "10:00",
+            "subject": "English",
+            "teacher": "Mrs. Jones"
+          },
+          {
+            "time": "11:00",
+            "subject": "Science",
+            "teacher": "Mr. Brown"
+          },
+          {
+            "time": "12:00",
+            "subject": "History",
+            "teacher": "Miss. White"
+          },
+          {
+            "time": "13:00",
+            "subject": "Lunch",
+            "teacher": ""
+          },
+          {
+            "time": "14:00",
+            "subject": "Art",
+            "teacher": "Mr. Green"
+          },
+          {
+            "time": "15:00",
+            "subject": "Music",
+            "teacher": "Mrs. Black"
+          },
+          {
+            "time": "16:00",
+            "subject": "PE",
+            "teacher": "Mr. Blue"
+          }
+        ]
+      },
+      {
+        "day": "thu",
+        "items": [
+          {
+            "time": "9:00",
+            "subject": "Maths",
+            "teacher": "Mr. Smith"
+          },
+          {
+            "time": "10:00",
+            "subject": "English",
+            "teacher": "Mrs. Jones"
+          },
+          {
+            "time": "11:00",
+            "subject": "Science",
+            "teacher": "Mr. Brown"
+          },
+          {
+            "time": "12:00",
+            "subject": "History",
+            "teacher": "Miss. White"
+          },
+          {
+            "time": "13:00",
+            "subject": "Lunch",
+            "teacher": ""
+          },
+          {
+            "time": "14:00",
+            "subject": "Art",
+            "teacher": "Mr. Green"
+          },
+          {
+            "time": "15:00",
+            "subject": "Music",
+            "teacher": "Mrs. Black"
+          },
+          {
+            "time": "16:00",
+            "subject": "PE",
+            "teacher": "Mr. Blue"
+          }
+        ]
+      },
+      {
+        "day": "fri",
+        "items": [
+          {
+            "time": "9:00",
+            "subject": "Maths",
+            "teacher": "Mr. Smith"
+          },
+          {
+            "time": "10:00",
+            "subject": "English",
+            "teacher": "Mrs. Jones"
+          },
+          {
+            "time": "11:00",
+            "subject": "Science",
+            "teacher": "Mr. Brown"
+          },
+          {
+            "time": "12:00",
+            "subject": "History",
+            "teacher": "Miss. White"
+          },
+          {
+            "time": "13:00",
+            "subject": "Lunch",
+            "teacher": ""
+          },
+          {
+            "time": "14:00",
+            "subject": "Art",
+            "teacher": "Mr. Green"
+          },
+          {
+            "time": "15:00",
+            "subject": "Music",
+            "teacher": "Mrs. Black"
+          },
+          {
+            "time": "16:00",
+            "subject": "PE",
+            "teacher": "Mr. Blue"
+          }
+        ]
+      }
+    ],
+    "timetableDesktop": [
+      {
+        "start": "2024-04-15 8:00",
+        "end": "2024-04-15 8:01",
+        "subject": "Maths 1",
+        "teacher": "Mr. Smith"
+      },
+      {
+        "start": "2024-04-15 8:45",
+        "end": "2024-04-15 9:00",
+        "subject": "Maths ",
+        "teacher": "Mr. Smith"
+      },
+      {
+        "start": "2024-04-15 9:00",
+        "end": "2024-04-15 10:00",
+        "subject": "English",
+        "teacher": "Mrs. Jones"
+      },
+      {
+        "start": "2024-04-15 10:00",
+        "end": "2024-04-15 11:00",
+        "subject": "Science",
+        "teacher": "Mr. Brown"
+      },
+      {
+        "start": "2024-04-15 11:00",
+        "end": "2024-04-15 12:00",
+        "subject": "History",
+        "teacher": "Miss. White"
+      },
+      {
+        "start": "2024-04-15 12:00",
+        "end": "2024-04-15 13:00",
+        "subject": "Lunch",
+        "teacher": ""
+      },
+      {
+        "start": "2024-04-15 13:00",
+        "end": "2024-04-15 14:00",
+        "subject": "Art",
+        "teacher": "Mr. Green"
+      },
+      {
+        "start": "2024-04-15 14:00",
+        "end": "2024-04-15 15:00",
+        "subject": "Music",
+        "teacher": "Mrs. Black"
+      },
+      {
+        "start": "2024-04-15 15:00",
+        "end": "2024-04-15 16:00",
+        "subject": "PE",
+        "teacher": "Mr. Blue"
+      },
+      {
+        "start": "2024-04-16 8:00",
+        "end": "2024-04-16 9:00",
+        "subject": "Maths",
+        "teacher": "Mr. Smith"
+      },
+      {
+        "start": "2024-04-16 9:00",
+        "end": "2024-04-16 10:00",
+        "subject": "English",
+        "teacher": "Mrs. Jones"
+      },
+      {
+        "start": "2024-04-16 10:00",
+        "end": "2024-04-16 11:00",
+        "subject": "Science",
+        "teacher": "Mr. Brown"
+      },
+      {
+        "start": "2024-04-16 11:00",
+        "end": "2024-04-16 12:00",
+        "subject": "History",
+        "teacher": "Miss. White"
+      },
+      {
+        "start": "2024-04-16 12:00",
+        "end": "2024-04-16 13:00",
+        "subject": "Lunch",
+        "teacher": ""
+      },
+      {
+        "start": "2024-04-16 13:00",
+        "end": "2024-04-16 14:00",
+        "subject": "Art",
+        "teacher": "Mr. Green"
+      },
+      {
+        "start": "2024-04-16 14:00",
+        "end": "2024-04-16 15:00",
+        "subject": "Music",
+        "teacher": "Mrs. Black"
+      },
+      {
+        "start": "2024-04-16 15:00",
+        "end": "2024-04-16 16:00",
+        "subject": "PE",
+        "teacher": "Mr. Blue"
+      },
+      {
+        "start": "2024-04-17 8:00",
+        "end": "2024-04-17 9:00",
+        "subject": "Maths",
+        "teacher": "Mr. Smith"
+      },
+      {
+        "start": "2024-04-17 9:00",
+        "end": "2024-04-17 10:00",
+        "subject": "English",
+        "teacher": "Mrs. Jones"
+      },
+      {
+        "start": "2024-04-17 10:00",
+        "end": "2024-04-17 11:00",
+        "subject": "Science",
+        "teacher": "Mr. Brown"
+      },
+      {
+        "start": "2024-04-17 11:00",
+        "end": "2024-04-17 12:00",
+        "subject": "History",
+        "teacher": "Miss. White"
+      },
+      {
+        "start": "2024-04-17 12:00",
+        "end": "2024-04-17 13:00",
+        "subject": "Lunch",
+        "teacher": ""
+      },
+      {
+        "start": "2024-04-17 13:00",
+        "end": "2024-04-17 14:00",
+        "subject": "Art",
+        "teacher": "Mr. Green"
+      },
+      {
+        "start": "2024-04-17 14:00",
+        "end": "2024-04-17 15:00",
+        "subject": "Music",
+        "teacher": "Mrs. Black"
+      },
+      {
+        "start": "2024-04-17 15:00",
+        "end": "2024-04-17 16:00",
+        "subject": "PE",
+        "teacher": "Mr. Blue"
+      },
+      {
+        "start": "2024-04-18 8:00",
+        "end": "2024-04-18 9:00",
+        "subject": "Maths",
+        "teacher": "Mr. Smith"
+      },
+      {
+        "start": "2024-04-18 9:00",
+        "end": "2024-04-18 10:00",
+        "subject": "English",
+        "teacher": "Mrs. Jones"
+      },
+      {
+        "start": "2024-04-18 10:00",
+        "end": "2024-04-18 11:00",
+        "subject": "Science",
+        "teacher": "Mr. Brown"
+      },
+      {
+        "start": "2024-04-18 11:00",
+        "end": "2024-04-18 12:00",
+        "subject": "History",
+        "teacher": "Miss. White"
+      },
+      {
+        "start": "2024-04-18 12:00",
+        "end": "2024-04-18 13:00",
+        "subject": "Lunch",
+        "teacher": ""
+      },
+      {
+        "start": "2024-04-18 13:00",
+        "end": "2024-04-18 14:00",
+        "subject": "Art",
+        "teacher": "Mr. Green"
+      },
+      {
+        "start": "2024-04-18 14:00",
+        "end": "2024-04-18 15:00",
+        "subject": "Music",
+        "teacher": "Mrs. Black"
+      },
+      {
+        "start": "2024-04-18 15:00",
+        "end": "2024-04-18 16:00",
+        "subject": "PE",
+        "teacher": "Mr. Blue"
+      },
+      {
+        "start": "2024-04-19 8:00",
+        "end": "2024-04-19 9:00",
+        "subject": "Maths",
+        "teacher": "Mr. Smith"
+      },
+      {
+        "start": "2024-04-19 9:00",
+        "end": "2024-04-19 10:00",
+        "subject": "English",
+        "teacher": "Mrs. Jones"
+      },
+      {
+        "start": "2024-04-19 10:00",
+        "end": "2024-04-19 11:00",
+        "subject": "Science",
+        "teacher": "Mr. Brown"
+      },
+      {
+        "start": "2024-04-19 11:00",
+        "end": "2024-04-19 12:00",
+        "subject": "History",
+        "teacher": "Miss. White"
+      },
+      {
+        "start": "2024-04-19 12:00",
+        "end": "2024-04-19 13:00",
+        "subject": "Lunch",
+        "teacher": ""
+      },
+      {
+        "start": "2024-04-19 13:00",
+        "end": "2024-04-19 14:00",
+        "subject": "Art",
+        "teacher": "Mr. Green"
+      },
+      {
+        "start": "2024-04-19 14:00",
+        "end": "2024-04-19 15:00",
+        "subject": "Music",
+        "teacher": "Mrs. Black"
+      },
+      {
+        "start": "2024-04-19 15:00",
+        "end": "2024-04-19 16:00",
+        "subject": "PE",
+        "teacher": "Mr. Blue"
+      }
+    ]
+  }
+  

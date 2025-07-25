@@ -1,0 +1,53 @@
+import type { FC } from 'react'
+
+import { Permission } from '@/core/utils/permission'
+import { createPage } from '@/core/utils/route-guard'
+import { feed } from '@/mock-data/feeds.json'
+import ForbiddenState from '@features/states/forbbiden-state'
+import FeedItemPage from '@templates/post-detail-page.template'
+import { useResponsive } from '@/core/hooks'
+import ContentPageLayout from '@templates/content-page.layout'
+import PostDetailPageTemplate from '@templates/post-detail-page.template'
+import { useParams } from 'react-router-dom'
+import { useGetSchoolFeedById } from '@/api/feed/use-get-school-feed-by-id'
+import PostDetail from '@molecules/post-detail'
+
+const PERMISSIONS: Permission[] = []
+const DISPLAY_NAME = 'NewsDetail'
+
+export const Route: FC = () => {
+  const { isDesktop } = useResponsive()
+  const { id } = useParams()
+  const { feed, error, isLoading, isValidating } = useGetSchoolFeedById(
+    id || '',
+  )
+  // console.log(id, feeds)
+
+  return (
+    <ContentPageLayout titlePage={isDesktop ? feed?.title : 'Feed'}>
+      <PostDetailPageTemplate
+        title={feed?.title}
+        article={
+          <PostDetail
+            title={feed?.title}
+            desc={feed?.description}
+            pubDate={feed?.creation}
+            modifiedAt={feed?.modified}
+            // thumbnail={feed?.thumbnail}
+            content={feed?.display_image || feed?.display_pdf || feed?.content}
+            contentType={
+              feed?.display_image ? 'image' : feed?.display_pdf ? 'pdf' : 'text'
+            }
+          />
+        }
+      />
+    </ContentPageLayout>
+  )
+}
+
+const Component = createPage(Route, PERMISSIONS, <ForbiddenState />)
+
+Route.displayName = `${DISPLAY_NAME}Page`
+Component.displayName = DISPLAY_NAME
+
+export { Component }

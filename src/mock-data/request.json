@@ -1,0 +1,20 @@
+{
+    "requests": [
+      {
+        "status": "Pending",
+        "time": "Morning 24/04/2024 - Afternoon 24/04/2024",
+        "reason": "Travel"
+      },
+      {
+        "status": "Approved",
+        "time": "Morning 22/03/2024 - Afternoon 22/03/2024",
+        "reason": "Sick"
+      },
+      {
+        "status": "Cancelled",
+        "time": "Morning 12/03/2024 - Afternoon 18/03/2024",
+        "reason": "Lazy"
+      }
+    ]
+  }
+  

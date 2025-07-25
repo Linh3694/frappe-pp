@@ -1,0 +1,31 @@
+{
+    "classNoti": [
+      {
+        "title": "Leave request approved",
+        "description": "Leave request for Nguyen Minh Anh has been approved",
+        "date": "25/03/2024",
+        "unread": false
+      },
+      {
+        "title": "New report card added",
+        "description": "New report card for Nguyen Minh Anh has been added",
+        "date": "23/03/2024",
+        "unread": true
+      }
+    ],
+    "schoolNoti": [
+      {
+        "title": "New announcement",
+        "description": "New announcement from school",
+        "date": "27/03/2024",
+        "unread": false
+      },
+      {
+        "title": "New event",
+        "description": "New event from school",
+        "date": "25/03/2024",
+        "unread": false
+      }
+    ]
+  }
+  
