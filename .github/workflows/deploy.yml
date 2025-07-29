@@ -2,7 +2,7 @@ name: Deploy Parent Portal
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
 
 jobs:
   deploy:
@@ -24,7 +24,8 @@ jobs:
       - name: Build application
         run: npm run build
 
-      - name: Deploy to server
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/main'
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: 42.96.40.246
@@ -35,7 +36,8 @@ jobs:
             # Navigate to project directory
             cd /srv/app/frappe-pp
 
-            # Pull latest code
+            # Pull latest code from main branch
+            git checkout main
             git pull origin main
 
             # Install dependencies (if package.json changed)
@@ -47,13 +49,46 @@ jobs:
             # Restart nginx (if needed)
             sudo systemctl reload nginx
 
-            echo "✅ Deployment completed successfully!"
+            echo "✅ Production deployment completed successfully!"
+
+      - name: Deploy to Staging
+        if: github.ref == 'refs/heads/staging'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 42.96.42.197
+          username: ${{ secrets.SSH_USERNAME_STAGING }}
+          key: ${{ secrets.SSH_PRIVATE_KEY_STAGING }}
+          port: 22
+          script: |
+            # Navigate to project directory
+            cd /srv/app/frappe-pp
+
+            # Pull latest code from staging branch
+            git checkout staging
+            git pull origin staging
+
+            # Install dependencies (if package.json changed)
+            npm install --legacy-peer-deps
+
+            # Build application
+            npm run build
+
+            # Restart nginx (if needed)
+            sudo systemctl reload nginx
+
+            echo "✅ Staging deployment completed successfully!"
 
       - name: Notify deployment status
         if: always()
         run: |
           if [ ${{ job.status }} == 'success' ]; then
-            echo "🎉 Deployment successful!"
+            if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+              echo "🎉 Production deployment successful!"
+              echo "🌐 Available at: https://parentportal.wellspring.edu.vn"
+            else
+              echo "🎉 Staging deployment successful!"
+              echo "🌐 Available at: https://staging.parentportal.wellspring.edu.vn"
+            fi
           else
             echo "❌ Deployment failed!"
           fi

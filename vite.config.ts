@@ -45,6 +45,7 @@ export default defineConfig({
   ],
   server: {
     port: 8080,
+    host: true, // Cho phép external connections
     proxy: {
       // Proxy các API calls về backend Frappe
       '^/(app|api|assets|files|private)': {
@@ -146,6 +147,7 @@ export default defineConfig({
     host: true, // Cho phép external connections
     allowedHosts: [
       'parentportal.wellspring.edu.vn',
+      'staging.parentportal.wellspring.edu.vn', // Thêm staging domain
       'localhost',
       '127.0.0.1'
     ]

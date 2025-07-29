@@ -50,7 +50,7 @@ export default function SignInForm({ className }: Props) {
               <FormItem>
                 <FormLabel htmlFor="input-email" className="text-white">
                   {t('components.inputs.email.label')}
-                  <span className="ml-0.5 text-red-900">*</span>
+                  <span className="ml-0.5 text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input
