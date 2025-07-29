@@ -3,6 +3,10 @@ export const FRAPPE_APIS = {
     METHOD_STRING: 'parent_portal.api.user_availability.get_person_by_current_user',
     SWR_KEY: 'get_current_user_profile',
   },
+  GET_USER_INFO_AFTER_LOGIN: {
+    METHOD_STRING: 'parent_portal.api.login.get_user_info_after_login',
+    SWR_KEY: 'get_user_info_after_login',
+  },
   GET_ALL_CLASS_FEED: {
     METHOD_STRING: 'parent_portal.api.sis_feed.class_feed.get_all_class_feed',
     SWR_KEY: 'get_all_class_feed',

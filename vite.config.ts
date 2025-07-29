@@ -145,6 +145,26 @@ export default defineConfig({
   preview: {
     port: 8080,
     host: true, // Cho phép external connections
+    proxy: {
+      // Cùng proxy config như dev server cho production preview
+      '^/(app|api|files|private)': {
+        target: 'https://admin.sis.wellspring.edu.vn',
+        changeOrigin: true,
+        secure: true,
+        ws: true,
+        cookieDomainRewrite: {
+          'admin.sis.wellspring.edu.vn': 'parentportal.wellspring.edu.vn',
+          '.admin.sis.wellspring.edu.vn': '.wellspring.edu.vn',
+          '.wellspring.edu.vn': '.wellspring.edu.vn'
+        },
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Origin': 'https://admin.sis.wellspring.edu.vn',
+          'Referer': 'https://admin.sis.wellspring.edu.vn/',
+        },
+      }
+    },
     allowedHosts: [
       'parentportal.wellspring.edu.vn',
       'staging.parentportal.wellspring.edu.vn', // Thêm staging domain

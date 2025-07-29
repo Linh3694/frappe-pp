@@ -7,6 +7,7 @@ import {
 import React, { createContext, useState } from 'react'
 import Cookies from 'js-cookie'
 import { getLoginUrl, getUserProfileUrl } from '@/lib/utils/api-url'
+import { getUserInfoAfterLogin } from '@/api/account/use-get-user-info-after-login'
 
 
 
@@ -288,8 +289,11 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
     setIsLoading(true)
     
     try {
-      // Step 1: Call login API through proxy to production backend
-      const response = await fetch(getLoginUrl(), {
+      // Step 1: Call login API - use proxy approach for production too
+      const loginUrl = getLoginUrl()
+      console.log('🔐 Attempting login to:', loginUrl)
+      
+      const response = await fetch(loginUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -355,56 +359,67 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
         
         console.log('🎯 Final user info:', userInfo)
         
-        // Step 6: Determine role from user profile or email pattern
-        let role = USER_ROLE.GUARDIAN  // Default to GUARDIAN instead of TEACHER
-        let prefix = ''               // Default to empty for GUARDIAN
+        // Step 6: Determine role from backend API (SECURE & ACCURATE)
+        let role = USER_ROLE.GUARDIAN  // Default fallback
+        let prefix = ''               // Default fallback
         
-        // Method 1: Check if we have full profile data with roles
-        if (fullProfile && (fullProfile as any).roles) {
-          const userRoles = Array.isArray((fullProfile as any).roles) ? (fullProfile as any).roles : [];
-          const hasTeacherRole = userRoles.some((r: any) => r.role === 'Teacher' || r.role === 'Faculty');
-          const hasGuardianRole = userRoles.some((r: any) => r.role === 'Guardian' || r.role === 'Parent' || r.role === 'PP User');
+        console.log('🎯 Fetching role information from backend API...')
+        try {
+          // Call backend API to get accurate role information
+          const backendUserInfo = await getUserInfoAfterLogin()
           
-          if (hasTeacherRole) {
-            role = USER_ROLE.TEACHER
-            prefix = 'teacher'
-          } else if (hasGuardianRole) {
-            role = USER_ROLE.GUARDIAN
-            prefix = ''
-          }
-          console.log('🎯 Role determined from profile roles:', { userRoles, role, prefix })
-        }
-        // Method 2: Fallback to email pattern analysis
-        else {
-          // Analyze email pattern for role hints
-          const email = username.toLowerCase()
-          
-          // Teacher patterns: usually have specific domains or patterns
-          if (email.includes('teacher') || email.includes('faculty') || 
-              email.includes('staff') || email.includes('edu.vn')) {
-            // But check if it's actually a guardian email
-            if (email.includes('parent') || email.includes('guardian')) {
-              role = USER_ROLE.GUARDIAN
-              prefix = ''
-            } else {
-              // For now, default most edu.vn emails to GUARDIAN since that's what we're seeing
+          if (backendUserInfo && backendUserInfo.pp_user_exists) {
+            // Map backend role to frontend enum
+            if (backendUserInfo.role === 'Teacher') {
+              role = USER_ROLE.TEACHER
+              prefix = 'teacher'
+            } else if (backendUserInfo.role === 'Parent') {
               role = USER_ROLE.GUARDIAN
               prefix = ''
             }
+            
+            console.log('✅ Role determined from backend API:', { 
+              backendRole: backendUserInfo.role, 
+              frontendRole: role, 
+              prefix,
+              ppUserExists: backendUserInfo.pp_user_exists 
+            })
+            
+            // Update userInfo with backend data if available
+            if (backendUserInfo.user_info) {
+              userInfo = {
+                ...userInfo,
+                ...backendUserInfo.user_info
+              }
+            }
           } else {
-            role = USER_ROLE.GUARDIAN
-            prefix = ''
+            console.warn('⚠️ No PP User record found, using fallback logic')
+            
+            // Fallback: Analyze email pattern for role hints (only when no PP User)
+            const email = username.toLowerCase()
+            if (email.includes('teacher') || email.includes('faculty') || email.includes('staff')) {
+              role = USER_ROLE.TEACHER
+              prefix = 'teacher'
+            } else {
+              role = USER_ROLE.GUARDIAN
+              prefix = ''
+            }
+            console.log('🔄 Role determined from fallback logic:', { email, role, prefix })
           }
-          console.log('🎯 Role determined from email pattern:', { email, role, prefix })
-        }
-        
-        // Method 3: Override with home_page if it's clearly defined
-        if (result.home_page) {
-          if (result.home_page.includes('/parent_portal') || result.home_page === '/') {
-            role = USER_ROLE.GUARDIAN
-            prefix = ''
+        } catch (apiError) {
+          console.error('❌ Failed to get role from backend API, using fallback:', apiError)
+          
+          // Final fallback: Check home_page from login response
+          if (result.home_page) {
+            if (result.home_page.includes('/teacher')) {
+              role = USER_ROLE.TEACHER
+              prefix = 'teacher'
+            } else {
+              role = USER_ROLE.GUARDIAN
+              prefix = ''
+            }
+            console.log('🔄 Role determined from home_page fallback:', { role, prefix, home_page: result.home_page })
           }
-          console.log('🎯 Final role after home_page check:', { role, prefix, home_page: result.home_page })
         }
         
         // Step 7: Set state
