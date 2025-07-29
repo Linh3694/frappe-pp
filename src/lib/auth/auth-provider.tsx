@@ -7,7 +7,7 @@ import {
 import React, { createContext, useState } from 'react'
 import Cookies from 'js-cookie'
 import { getLoginUrl, getUserProfileUrl } from '@/lib/utils/api-url'
-import { getUserInfoAfterLogin } from '@/api/account/use-get-user-info-after-login'
+import { getCurrentUserInfo } from '@/api/account/use-get-user-info-after-login'
 
 
 
@@ -366,9 +366,9 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
         console.log('🎯 Fetching role information from backend API...')
         try {
           // Call backend API to get accurate role information
-          const backendUserInfo = await getUserInfoAfterLogin()
+          const backendUserInfo = await getCurrentUserInfo()
           
-          if (backendUserInfo && backendUserInfo.pp_user_exists) {
+          if (backendUserInfo && !backendUserInfo.is_guest) {
             // Map backend role to frontend enum
             if (backendUserInfo.role === 'Teacher') {
               role = USER_ROLE.TEACHER
@@ -382,7 +382,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
               backendRole: backendUserInfo.role, 
               frontendRole: role, 
               prefix,
-              ppUserExists: backendUserInfo.pp_user_exists 
+              isGuest: backendUserInfo.is_guest 
             })
             
             // Update userInfo with backend data if available
@@ -393,18 +393,26 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
               }
             }
           } else {
-            console.warn('⚠️ No PP User record found, using fallback logic')
+            console.warn('⚠️ Backend API returned guest or no data, using fallback logic')
             
-            // Fallback: Analyze email pattern for role hints (only when no PP User)
+            // Fallback: Analyze email pattern for role hints
             const email = username.toLowerCase()
-            if (email.includes('teacher') || email.includes('faculty') || email.includes('staff')) {
+            
+            // Improved email pattern matching
+            if (email.includes('teacher') || email.includes('faculty') || 
+                email.includes('staff') || email.includes('instructor') ||
+                email.includes('edu.vn')) {  // edu.vn domains more likely to be teachers
               role = USER_ROLE.TEACHER
               prefix = 'teacher'
+            } else if (email.includes('parent') || email.includes('guardian')) {
+              role = USER_ROLE.GUARDIAN
+              prefix = ''
             } else {
+              // Default to GUARDIAN for safety
               role = USER_ROLE.GUARDIAN
               prefix = ''
             }
-            console.log('🔄 Role determined from fallback logic:', { email, role, prefix })
+            console.log('🔄 Role determined from email pattern fallback:', { email, role, prefix })
           }
         } catch (apiError) {
           console.error('❌ Failed to get role from backend API, using fallback:', apiError)

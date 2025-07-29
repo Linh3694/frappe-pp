@@ -1,7 +1,7 @@
 import { useFrappeGetCall } from 'frappe-react-sdk'
 import { FRAPPE_APIS } from '../api.config'
 
-export interface UserInfoAfterLogin {
+export interface CurrentUserInfo {
   user: string
   user_info: {
     name: string
@@ -14,17 +14,18 @@ export interface UserInfoAfterLogin {
   role: string
   prefix: string
   session_valid: boolean
-  pp_user_exists: boolean
+  pp_user_exists?: boolean
+  is_guest?: boolean
   error?: string
 }
 
-export const useGetUserInfoAfterLogin = (skip?: boolean) => {
+export const useGetCurrentUserInfo = (skip?: boolean) => {
   const { data, error, isLoading, isValidating, mutate } = useFrappeGetCall<{
-    message: UserInfoAfterLogin
+    message: CurrentUserInfo
   }>(
-    FRAPPE_APIS.GET_USER_INFO_AFTER_LOGIN.METHOD_STRING,
+    FRAPPE_APIS.GET_CURRENT_USER_INFO.METHOD_STRING,
     {},
-    !skip ? FRAPPE_APIS.GET_USER_INFO_AFTER_LOGIN.SWR_KEY : null,
+    !skip ? FRAPPE_APIS.GET_CURRENT_USER_INFO.SWR_KEY : null,
   )
 
   const userInfo = data?.message
@@ -39,10 +40,10 @@ export const useGetUserInfoAfterLogin = (skip?: boolean) => {
 }
 
 // Helper function để gọi API trực tiếp không qua SWR
-export const getUserInfoAfterLogin = async (): Promise<UserInfoAfterLogin | null> => {
+export const getCurrentUserInfo = async (): Promise<CurrentUserInfo | null> => {
   try {
-    console.log('🔍 Fetching user info after login from API...')
-    const response = await fetch(`/api/method/${FRAPPE_APIS.GET_USER_INFO_AFTER_LOGIN.METHOD_STRING}`, {
+    console.log('🔍 Fetching current user info from API...')
+    const response = await fetch(`/api/method/${FRAPPE_APIS.GET_CURRENT_USER_INFO.METHOD_STRING}`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -51,20 +52,20 @@ export const getUserInfoAfterLogin = async (): Promise<UserInfoAfterLogin | null
     })
     
     if (!response.ok) {
-      console.warn('⚠️ Failed to fetch user info after login:', response.status)
+      console.warn('⚠️ Failed to fetch current user info:', response.status)
       return null
     }
     
     const result = await response.json()
-    console.log('✅ User info after login API response:', result)
+    console.log('✅ Current user info API response:', result)
     
     if (result.message) {
-      return result.message as UserInfoAfterLogin
+      return result.message as CurrentUserInfo
     }
     
     return null
   } catch (error) {
-    console.error('❌ Error fetching user info after login:', error)
+    console.error('❌ Error fetching current user info:', error)
     return null
   }
 } 
