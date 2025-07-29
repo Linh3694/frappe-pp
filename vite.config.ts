@@ -48,7 +48,7 @@ export default defineConfig({
     host: true, // Cho phép external connections
     proxy: {
       // Proxy các API calls về backend Frappe
-      '^/(app|api|assets|files|private)': {
+      '^/(app|api|files|private)': {  // Bỏ 'assets'
         target: 'https://admin.sis.wellspring.edu.vn',
         changeOrigin: true,
         secure: true,
@@ -165,7 +165,7 @@ export default defineConfig({
     outDir: 'dist', // Build vào thư mục dist thay vì nested path
     emptyOutDir: true,
     target: 'es2015',
-    assetsDir: 'assets', // Đảm bảo assets được build đúng với base path
+    assetsDir: 'static', // Thay vì 'assets'
     rollupOptions: {
       output: {
         // Ổn định tên file để dễ debug

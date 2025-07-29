@@ -6,6 +6,7 @@ import {
 } from 'frappe-react-sdk'
 import React, { createContext, useState } from 'react'
 import Cookies from 'js-cookie'
+import { getLoginUrl, getUserProfileUrl } from '@/lib/utils/api-url'
 
 
 
@@ -44,7 +45,7 @@ const getUserDataFromCookies = () => {
 const fetchUserProfile = async (): Promise<SISPerson | null> => {
   try {
     console.log('🔍 Fetching user profile from API...')
-    const response = await fetch('https://admin.sis.wellspring.edu.vn/api/method/parent_portal.api.user_availability.get_person_by_current_user', {
+    const response = await fetch(getUserProfileUrl(), {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -67,6 +68,18 @@ const fetchUserProfile = async (): Promise<SISPerson | null> => {
     return null
   } catch (error) {
     console.error('❌ Error fetching user profile:', error)
+    
+    // Enhanced error logging để debug
+    if (error instanceof TypeError && error.message.includes('fetch')) {
+      console.error('🌐 Profile Network Error Details:', {
+        error: error.message,
+        url: getUserProfileUrl(),
+        isDev: import.meta.env.DEV,
+        isProd: import.meta.env.PROD,
+        mode: import.meta.env.MODE
+      })
+    }
+    
     return null
   }
 }
@@ -276,7 +289,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
     
     try {
       // Step 1: Call login API through proxy to production backend
-      const response = await fetch('https://admin.sis.wellspring.edu.vn/api/method/login', {
+      const response = await fetch(getLoginUrl(), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -425,6 +438,18 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
       
     } catch (error) {
       console.error('💥 Login failed:', error)
+      
+      // Enhanced error logging để debug
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        console.error('🌐 Network Error Details:', {
+          error: error.message,
+          url: getLoginUrl(),
+          isDev: import.meta.env.DEV,
+          isProd: import.meta.env.PROD,
+          mode: import.meta.env.MODE
+        })
+      }
+      
       setIsLoading(false)
       throw error
     }
