@@ -5,7 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/', // Always use '/' for development, production will be handled by server
+  base: '/', // Root path cho standalone app
   plugins: [
     react(),
     VitePWA({
@@ -33,7 +33,7 @@ export default defineConfig({
           },
         ],
         // scope: "",
-        start_url: '/parent_portal/',
+        start_url: '/', // Root path cho standalone app
         display: 'standalone',
         theme_color: '#000000',
         background_color: '#ffffff',
@@ -46,6 +46,7 @@ export default defineConfig({
   server: {
     port: 8080,
     proxy: {
+      // Proxy các API calls về backend Frappe
       '^/(app|api|assets|files|private)': {
         target: 'https://admin.sis.wellspring.edu.vn',
         changeOrigin: true,
@@ -94,22 +95,22 @@ export default defineConfig({
               
               const rewrittenCookies = proxyRes.headers['set-cookie'].map(cookie => {
                 let rewritten = cookie
-                  // Rewrite all possible domains to localhost
-                  .replace(/Domain=admin\.sis\.wellspring\.edu\.vn/gi, 'Domain=localhost')
-                  .replace(/Domain=\.admin\.sis\.wellspring\.edu\.vn/gi, 'Domain=localhost')
-                  .replace(/Domain=\.wellspring\.edu\.vn/gi, 'Domain=localhost')
-                  .replace(/Domain=wellspring\.edu\.vn/gi, 'Domain=localhost')
-                  // Remove Secure flag for localhost (no HTTPS)
-                  .replace(/;\s*Secure/gi, '')
-                  // Set SameSite to Lax for development (None requires Secure)
-                  .replace(/SameSite=None/gi, 'SameSite=Lax')
+                  // Rewrite all possible domains to localhost for dev, production domain for prod
+                  .replace(/Domain=admin\.sis\.wellspring\.edu\.vn/gi, process.env.NODE_ENV === 'development' ? 'Domain=localhost' : 'Domain=parentportal.wellspring.edu.vn')
+                  .replace(/Domain=\.admin\.sis\.wellspring\.edu\.vn/gi, process.env.NODE_ENV === 'development' ? 'Domain=localhost' : 'Domain=.wellspring.edu.vn')
+                  .replace(/Domain=\.wellspring\.edu\.vn/gi, process.env.NODE_ENV === 'development' ? 'Domain=localhost' : 'Domain=.wellspring.edu.vn')
+                  .replace(/Domain=wellspring\.edu\.vn/gi, process.env.NODE_ENV === 'development' ? 'Domain=localhost' : 'Domain=.wellspring.edu.vn')
+                  // Remove Secure flag for localhost only
+                  .replace(/;\s*Secure/gi, process.env.NODE_ENV === 'development' ? '' : '; Secure')
+                  // Set SameSite appropriately
+                  .replace(/SameSite=None/gi, process.env.NODE_ENV === 'development' ? 'SameSite=Lax' : 'SameSite=None')
                   .replace(/SameSite=Strict/gi, 'SameSite=Lax')
                   // Ensure path is root
                   .replace(/Path=\/[^;]*/gi, 'Path=/');
                   
                 // Ensure SameSite is set if not present
                 if (!rewritten.includes('SameSite=')) {
-                  rewritten += '; SameSite=Lax';
+                  rewritten += process.env.NODE_ENV === 'development' ? '; SameSite=Lax' : '; SameSite=None';
                 }
                 
                 // Ensure Path is set if not present  
@@ -125,13 +126,15 @@ export default defineConfig({
                 return rewritten;
               });
               
-              console.log('🍪 Rewritten cookies for localhost:', rewrittenCookies);
+              console.log('🍪 Rewritten cookies:', rewrittenCookies);
               proxyRes.headers['set-cookie'] = rewrittenCookies;
             }
             
             // Add CORS headers for credentials
             proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
-            proxyRes.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080';
+            proxyRes.headers['Access-Control-Allow-Origin'] = process.env.NODE_ENV === 'development' 
+              ? 'http://localhost:8080' 
+              : 'https://parentportal.wellspring.edu.vn';
             proxyRes.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, X-Frappe-CSRF-Token';
           });
         },
@@ -156,8 +159,10 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../parent_portal/public/parent_portal',
+    outDir: 'dist', // Build vào thư mục dist thay vì nested path
     emptyOutDir: true,
     target: 'es2015',
+    // Đảm bảo assets được build đúng với base path
+    assetsDir: 'assets',
   },
 })
