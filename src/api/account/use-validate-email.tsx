@@ -17,7 +17,6 @@ export const useValidateEmail = (email?: string, skip?: boolean) => {
 
   useEffect(() => {
     if (!skip) {
-      // console.log('email mutate:', email)
       mutate()
     }
   }, [skip, email])

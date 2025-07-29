@@ -19,7 +19,6 @@ import { twMerge } from "tailwind-merge";
 //       if (!window.frappe) window.frappe = {};
 //       //@ts-ignore
 //       window.frappe.boot = v;
-//       console.log("window.frappe.boot", v);
 //     })
 //     .catch((error) => {
 //       console.warn("Failed to get dev context:", error);

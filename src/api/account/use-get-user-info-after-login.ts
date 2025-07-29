@@ -42,7 +42,6 @@ export const useGetCurrentUserInfo = (skip?: boolean) => {
 // Helper function để gọi API trực tiếp không qua SWR
 export const getCurrentUserInfo = async (): Promise<CurrentUserInfo | null> => {
   try {
-    console.log('🔍 Fetching current user info from API...')
     const response = await fetch(`/api/method/${FRAPPE_APIS.GET_CURRENT_USER_INFO.METHOD_STRING}`, {
       method: 'GET',
       headers: {
@@ -57,7 +56,6 @@ export const getCurrentUserInfo = async (): Promise<CurrentUserInfo | null> => {
     }
     
     const result = await response.json()
-    console.log('✅ Current user info API response:', result)
     
     if (result.message) {
       return result.message as CurrentUserInfo

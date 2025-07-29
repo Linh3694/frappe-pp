@@ -9,9 +9,7 @@ import Cookies from 'js-cookie'
 import { getLoginUrl, getUserProfileUrl } from '@/lib/utils/api-url'
 import { getCurrentUserInfo } from '@/api/account/use-get-user-info-after-login'
 
-
-
-// Helper function để lấy user data từ cookies sử dụng js-cookie (better approach)
+// Helper function để lấy user data từ cookies
 const getUserDataFromCookies = () => {
   const userId = Cookies.get('user_id') || ''
   const fullName = Cookies.get('full_name') || ''
@@ -19,12 +17,7 @@ const getUserDataFromCookies = () => {
   const systemUser = Cookies.get('system_user') || ''
   const sid = Cookies.get('sid') || ''
   
-  console.log('🍪 User data from cookies:', {
-    userId, fullName, userImage, systemUser, sid, hasImage: !!userImage
-  })
-  
   if (!userId || userId === 'Guest') {
-    console.log('❌ No valid user in cookies')
     return null
   }
   
@@ -45,7 +38,6 @@ const getUserDataFromCookies = () => {
 // Helper function để call API lấy full user profile
 const fetchUserProfile = async (): Promise<SISPerson | null> => {
   try {
-    console.log('🔍 Fetching user profile from API...')
     const response = await fetch(getUserProfileUrl(), {
       method: 'GET',
       headers: {
@@ -55,87 +47,32 @@ const fetchUserProfile = async (): Promise<SISPerson | null> => {
     })
     
     if (!response.ok) {
-      console.warn('⚠️ Failed to fetch user profile:', response.status)
       return null
     }
     
-    const result = await response.json()
-    console.log('✅ User profile API response:', result)
-    
+    const result = await response.json()    
     if (result.message) {
       return result.message as SISPerson
     }
     
     return null
   } catch (error) {
-    console.error('❌ Error fetching user profile:', error)
-    
-    // Enhanced error logging để debug
-    if (error instanceof TypeError && error.message.includes('fetch')) {
-      console.error('🌐 Profile Network Error Details:', {
-        error: error.message,
-        url: getUserProfileUrl(),
-        isDev: import.meta.env.DEV,
-        isProd: import.meta.env.PROD,
-        mode: import.meta.env.MODE
-      })
-    }
-    
+    console.error('Error fetching user profile:', error)
     return null
   }
 }
 
-// Helper function để determine user role từ username pattern hoặc default
-const determineUserRole = (username: string): { role: USER_ROLE, prefix: string } => {
-  // Logic để xác định role dựa trên pattern email hoặc default
-  // Tạm thời default là TEACHER, có thể customize sau
-  
-  // Nếu cần có thể thêm logic:
-  // if (username.includes('parent') || username.includes('guardian')) {
-  //   return { role: USER_ROLE.GUARDIAN, prefix: '' }
-  // }
-  
-  return { role: USER_ROLE.TEACHER, prefix: 'teacher' }
-}
-
-// Helper function để debug cookies và session
-const debugSessionInfo = () => {
-  console.log('🔍 Session Debug Info:')
-  console.log('📋 All Cookies:', document.cookie)
-  
-  // Parse cookies
-  const cookies = document.cookie.split(';').reduce((acc, cookie) => {
-    const [name, value] = cookie.trim().split('=')
-    acc[name] = decodeURIComponent(value || '')
-    return acc
-  }, {} as Record<string, string>)
-  
-  console.log('🍪 Parsed Cookies:', cookies)
-  console.log('🔑 SID Cookie:', cookies['sid'])
-  console.log('🛡️ CSRF Token:', (window as any).csrf_token)
-  console.log('🌐 Frappe Object:', (window as any).frappe)
-  
-  // Check local storage
-  console.log('💾 LocalStorage Keys:', Object.keys(localStorage))
-  console.log('💾 LocalStorage frappe keys:', Object.keys(localStorage).filter(k => k.includes('frappe')))
-  
-  return cookies
-}
-
-// Helper function để lấy CSRF token một cách an toàn
+// Helper function để lấy CSRF token
 const getCSRFToken = (): string => {
   try {
-    // Thử lấy từ window.csrf_token trước
     if ((window as any).csrf_token) {
       return (window as any).csrf_token
     }
     
-    // Thử lấy từ frappe object
     if ((window as any).frappe?.csrf_token) {
       return (window as any).frappe.csrf_token
     }
     
-    // Thử lấy từ cookie nếu có
     const cookies = document.cookie.split(';')
     for (let cookie of cookies) {
       const [name, value] = cookie.trim().split('=')
@@ -144,10 +81,9 @@ const getCSRFToken = (): string => {
       }
     }
     
-    console.warn('⚠️ CSRF token not found, continuing without it')
     return ''
   } catch (error) {
-    console.error('❌ Error getting CSRF token:', error)
+    console.error('Error getting CSRF token:', error)
     return ''
   }
 }
@@ -188,8 +124,7 @@ export const useAuthContext = () => React.useContext(AuthContext)
 export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   const { mutate } = useSWRConfig()
   
-  // State management
-  const [isLoading, setIsLoading] = useState(true) // Start with loading true
+  const [isLoading, setIsLoading] = useState(true)
   const [currentUser, setCurrentUser] = useState<string>('')
   const [userInfo, setUserInfo] = useState<AuthContextProps['userInfo']>()
   const [userRole, setUserRole] = useState<AuthContextProps['userRole']>()
@@ -202,15 +137,7 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
     const storedUserRole = localStorage.getItem('ppUserRole')
     const storedPrefixRoute = localStorage.getItem('ppPrefixRoute')
     
-    console.log('🔄 Restoring from localStorage:', {
-      storedUser,
-      storedUserInfo: !!storedUserInfo,
-      storedUserRole,
-      storedPrefixRoute
-    })
-    
     if (storedUser) {
-      console.log('✅ Restoring user session:', storedUser)
       setCurrentUser(storedUser)
       
       if (storedUserInfo) {
@@ -222,13 +149,8 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
       if (storedPrefixRoute) {
         setPrefixRoute(storedPrefixRoute)
       }
-      
-      console.log('✅ Session restored successfully')
-    } else {
-      console.log('ℹ️ No stored session found')
     }
     
-    // Set loading false sau khi restore xong
     setIsLoading(false)
   }, [])
 
@@ -252,46 +174,28 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
   }
 
   const updateCurrentUser = () => {
-    console.log('🔄 Updating current user info...')
-    
-    // Force refresh by re-reading cookies
     if (currentUser) {
       const cookieData = getUserDataFromCookies()
       if (cookieData && cookieData.userInfo) {
-        console.log('🍪 Updated user info from cookies:', cookieData.userInfo)
-        
-        // Update state with fresh cookie data
         setUserInfo(cookieData.userInfo as any)
         localStorage.setItem('ppUserInfo', JSON.stringify(cookieData.userInfo))
         
-        // Also check if we need to update other info
         if (cookieData.systemUser && !userRole) {
-          // Try to determine role if not set
-          const { role, prefix } = determineUserRole(currentUser)
-          setUserRole(role)
-          setPrefixRoute(prefix)
-          localStorage.setItem('ppUserRole', role)
-          localStorage.setItem('ppPrefixRoute', prefix)
-          console.log('🎯 Updated role from cookie data:', { role, prefix })
+          // Default to TEACHER role
+          setUserRole(USER_ROLE.TEACHER)
+          setPrefixRoute('teacher')
+          localStorage.setItem('ppUserRole', USER_ROLE.TEACHER)
+          localStorage.setItem('ppPrefixRoute', 'teacher')
         }
-        
-        console.log('✅ User info updated successfully')
-      } else {
-        console.log('⚠️ No valid cookie data found for update')
       }
-    } else {
-      console.log('⚠️ No current user to update')
     }
   }
 
   const handleLogin = async (username: string, password: string) => {
-    console.log('🚀 Starting simplified login flow:', { username })
     setIsLoading(true)
     
     try {
-      // Step 1: Call login API - use proxy approach for production too
       const loginUrl = getLoginUrl()
-      console.log('🔐 Attempting login to:', loginUrl)
       
       const response = await fetch(loginUrl, {
         method: 'POST',
@@ -311,28 +215,23 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
       }
       
       const result = await response.json()
-      console.log('✅ Login API response:', result)
       
       if (result.message === 'Logged In') {
-        console.log('✅ Login successful! Processing user data...')
-        
-        // Step 2: Wait một chút để cookies được set
+        // Wait for cookies to be set
         await new Promise(resolve => setTimeout(resolve, 500))
         
-        // Step 3: Lấy user data từ cookies
+        // Get user data from cookies
         const cookieData = getUserDataFromCookies()
-        console.log('🍪 Cookie data after login:', cookieData)
         
-        // Step 4: Try to fetch full user profile
+        // Try to fetch full user profile
         let fullProfile: SISPerson | null = null
         try {
           fullProfile = await fetchUserProfile()
-          console.log('👤 User profile from API:', fullProfile)
         } catch (profileError) {
-          console.warn('⚠️ Could not fetch full profile, using cookie data:', profileError)
+          console.warn('Could not fetch full profile, using cookie data:', profileError)
         }
         
-        // Step 5: Combine data sources
+        // Combine data sources
         let userInfo
         if (fullProfile) {
           userInfo = {
@@ -357,19 +256,14 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
           }
         }
         
-        console.log('🎯 Final user info:', userInfo)
+        // Determine role from backend API
+        let role = USER_ROLE.GUARDIAN
+        let prefix = ''
         
-        // Step 6: Determine role from backend API (SECURE & ACCURATE)
-        let role = USER_ROLE.GUARDIAN  // Default fallback
-        let prefix = ''               // Default fallback
-        
-        console.log('🎯 Fetching role information from backend API...')
         try {
-          // Call backend API to get accurate role information
           const backendUserInfo = await getCurrentUserInfo()
           
           if (backendUserInfo && !backendUserInfo.is_guest) {
-            // Map backend role to frontend enum
             if (backendUserInfo.role === 'Teacher') {
               role = USER_ROLE.TEACHER
               prefix = 'teacher'
@@ -377,13 +271,6 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
               role = USER_ROLE.GUARDIAN
               prefix = ''
             }
-            
-            console.log('✅ Role determined from backend API:', { 
-              backendRole: backendUserInfo.role, 
-              frontendRole: role, 
-              prefix,
-              isGuest: backendUserInfo.is_guest 
-            })
             
             // Update userInfo with backend data if available
             if (backendUserInfo.user_info) {
@@ -393,29 +280,21 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
               }
             }
           } else {
-            console.warn('⚠️ Backend API returned guest or no data, using fallback logic')
-            
             // Fallback: Analyze email pattern for role hints
             const email = username.toLowerCase()
             
-            // Improved email pattern matching
             if (email.includes('teacher') || email.includes('faculty') || 
                 email.includes('staff') || email.includes('instructor') ||
-                email.includes('edu.vn')) {  // edu.vn domains more likely to be teachers
+                email.includes('edu.vn')) {
               role = USER_ROLE.TEACHER
               prefix = 'teacher'
             } else if (email.includes('parent') || email.includes('guardian')) {
               role = USER_ROLE.GUARDIAN
               prefix = ''
-            } else {
-              // Default to GUARDIAN for safety
-              role = USER_ROLE.GUARDIAN
-              prefix = ''
             }
-            console.log('🔄 Role determined from email pattern fallback:', { email, role, prefix })
           }
         } catch (apiError) {
-          console.error('❌ Failed to get role from backend API, using fallback:', apiError)
+          console.error('Failed to get role from backend API:', apiError)
           
           // Final fallback: Check home_page from login response
           if (result.home_page) {
@@ -426,26 +305,24 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
               role = USER_ROLE.GUARDIAN
               prefix = ''
             }
-            console.log('🔄 Role determined from home_page fallback:', { role, prefix, home_page: result.home_page })
           }
         }
         
-        // Step 7: Set state
+        // Set state
         setCurrentUser(username)
         setUserInfo(userInfo as any)
         setUserRole(role)
         setPrefixRoute(prefix)
         
-        // Step 8: Save to localStorage
+        // Save to localStorage
         localStorage.setItem('ppCurrentUser', username)
         localStorage.setItem('ppUserInfo', JSON.stringify(userInfo))
         localStorage.setItem('ppUserRole', role)
         localStorage.setItem('ppPrefixRoute', prefix)
         
-        console.log('🎉 Login completed successfully!')
         setIsLoading(false)
         
-        // Step 9: Return navigation path
+        // Return navigation path
         let shouldNavigateTo: string | undefined
         if (role === USER_ROLE.TEACHER) {
           shouldNavigateTo = '/teacher'
@@ -460,30 +337,17 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
       }
       
     } catch (error) {
-      console.error('💥 Login failed:', error)
-      
-      // Enhanced error logging để debug
-      if (error instanceof TypeError && error.message.includes('fetch')) {
-        console.error('🌐 Network Error Details:', {
-          error: error.message,
-          url: getLoginUrl(),
-          isDev: import.meta.env.DEV,
-          isProd: import.meta.env.PROD,
-          mode: import.meta.env.MODE
-        })
-      }
-      
+      console.error('Login failed:', error)
       setIsLoading(false)
       throw error
     }
   }
 
   const handleLogout = async () => {
-    console.log('🚪 Starting logout...')
     setIsLoading(true)
     
     try {
-      // Clear localStorage trước
+      // Clear localStorage
       localStorage.removeItem('ppCurrentUser')
       localStorage.removeItem('ppUserInfo')
       localStorage.removeItem('ppUserRole')
@@ -509,15 +373,13 @@ export const AuthProvider = ({ children }: React.PropsWithChildren) => {
       // Clear cache
       await mutate(() => true, undefined, false)
       
-      console.log('✅ Logout completed')
-      
-      // Reload page sau logout
+      // Reload page after logout
       setTimeout(() => {
         window.location.reload()
       }, 100)
       
     } catch (error) {
-      console.error('💥 Logout error:', error)
+      console.error('Logout error:', error)
     } finally {
       setIsLoading(false)
     }
