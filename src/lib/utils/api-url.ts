@@ -1,17 +1,14 @@
 import env from '@/config/env'
 
 /**
- * Tạo API URL dựa trên môi trường
- * - Development: sử dụng relative URL (Vite proxy sẽ xử lý)  
- * - Production: cũng sử dụng relative URL (server proxy sẽ xử lý)
+ * Tạo API URL sử dụng backend server từ env config
  */
 export function getApiUrl(endpoint: string): string {
   // Remove leading slash nếu có
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint
   
-  // Luôn sử dụng relative URL để tránh CORS issues
-  // Server proxy (nginx/PM2) sẽ xử lý việc proxy về backend
-  return `/${cleanEndpoint}`
+  // Sử dụng absolute URL với backend server từ env
+  return `${env.FRAPPE_PATH}/${cleanEndpoint}`
 }
 
 /**
