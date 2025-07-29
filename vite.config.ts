@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      disable: process.env.NODE_ENV === 'development', // Disable PWA in development
+      disable: true, // Tạm thời disable PWA để tránh service worker issues
       // strategies: 'injectManifest',
       manifestFilename: 'manifest.json',
       manifest: {
@@ -39,7 +39,7 @@ export default defineConfig({
         background_color: '#ffffff',
       },
       devOptions: {
-        enabled: true,
+        enabled: false, // Disable cả trong dev
       },
     }),
   ],
@@ -143,6 +143,7 @@ export default defineConfig({
   },
   preview: {
     port: 8080,
+    host: true, // Cho phép external connections
     allowedHosts: [
       'parentportal.wellspring.edu.vn',
       'localhost',
@@ -162,7 +163,14 @@ export default defineConfig({
     outDir: 'dist', // Build vào thư mục dist thay vì nested path
     emptyOutDir: true,
     target: 'es2015',
-    // Đảm bảo assets được build đúng với base path
-    assetsDir: 'assets',
+    assetsDir: 'assets', // Đảm bảo assets được build đúng với base path
+    rollupOptions: {
+      output: {
+        // Ổn định tên file để dễ debug
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      }
+    }
   },
 })
