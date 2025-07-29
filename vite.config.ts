@@ -138,6 +138,14 @@ export default defineConfig({
       }
     },
   },
+  preview: {
+    port: 8080,
+    allowedHosts: [
+      'parentportal.wellspring.edu.vn',
+      'localhost',
+      '127.0.0.1'
+    ]
+  },
   resolve: {
     alias: {
       '@atoms': path.resolve(__dirname, 'src/core/ui/atoms'),
